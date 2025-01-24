@@ -14,6 +14,8 @@ while True:
     except ValueError:
         print("Please enter a valid number (3 or 5).")
 
+winning_score = (total_rounds // 2) + 1 
+
 round_num = 0
 while round_num < total_rounds:
     user_choice = input("Choose rock, paper, or scissors: ") #User to now input their choice and compare the computers. 
@@ -31,15 +33,23 @@ while round_num < total_rounds:
     else:
         print("Computer wins this round")
         computer_score += 1
-        
-    round_num += 1
+        round_num += 1
 
-print("\nGame over!")
-print(f"Final Score - user: {user_score}, {computer_score} : Computer")
-
-if user_score > computer_score:
-    print("Congratulations! You win the game!")
-elif user_score < computer_score:
-    print("Computer wins the game! Practise more!")
-else:
-    print("It's a tie overall!")
+    if user_score == winning_score:
+            print("Congratulations! You win the game!")
+            break
+    elif computer_score == winning_score:
+            print("Computer wins the game! Practise more!")
+            break
+    
+if round_num == total_rounds:
+    print("\n Game over!")
+    if user_score < winning_score and computer_score < winning_score:
+            print("\nGame over!")
+            print(f"Final Score - user: {user_score}, {computer_score} : Computer")
+    if user_score > computer_score:
+            print("Congratulations! You win the game!")
+    elif user_score < computer_score:
+            print("Computer wins the game! Practise more!")
+    else:
+            print("It's a tie overall!")
